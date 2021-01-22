@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import { Theme, useThemeAwareObject } from './theme';
 
@@ -21,15 +21,24 @@ const createStyles = (theme: Theme) => {
   return styles;
 };
 
+const createStyleVariables = (theme: Theme) => {
+  const styleVariables = {
+    statusBarColor: theme.color.primaryDark,
+  };
+  return styleVariables;
+};
+
 export interface ToolbarProps {
   title: string;
 }
 
 export const Toolbar = React.memo<ToolbarProps>((props) => {
   const Styles = useThemeAwareObject(createStyles);
+  const StyleVariables = useThemeAwareObject(createStyleVariables);
 
   return (
     <View style={Styles.container}>
+      <StatusBar backgroundColor={StyleVariables.statusBarColor} />
       <Text style={Styles.text}>{props.title}</Text>
     </View>
   );
