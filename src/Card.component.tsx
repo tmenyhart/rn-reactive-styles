@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from 'react-native';
 
 import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME, Theme, useTheme, useThemeAwareObject } from './theme';
+import { RenderCounter } from './RenderCounter.component';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
@@ -26,6 +27,7 @@ const createStyles = (theme: Theme) => {
     buttonsWrapper: {
       flexDirection: 'row',
       justifyContent: 'space-between',
+      marginTop: theme.spacing.double,
     },
     button: {
       backgroundColor: theme.color.primary,
@@ -85,6 +87,7 @@ export const Card = React.memo(() => {
         <Text style={Styles.infoText}>{'The current theme is: '}</Text>
         <Text style={InfoTextBoldStyles}>{theme.id}</Text>
       </View>
+      <RenderCounter />
       <View style={Styles.buttonsWrapper}>
         {ToggleButtonElement}
         {SetLightThemeButtonElement}
