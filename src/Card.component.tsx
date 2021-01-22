@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from 'react-native';
 
-import { Theme, useTheme, useThemeAwareObject } from './theme';
+import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME, Theme, useTheme, useThemeAwareObject } from './theme';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
@@ -23,22 +23,30 @@ const createStyles = (theme: Theme) => {
     infoTextBold: {
       fontWeight: 'bold',
     },
+    buttonsWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
     button: {
       backgroundColor: theme.color.primary,
       borderRadius: 4,
+      flex: 1,
+      justifyContent: 'center',
+      marginHorizontal: theme.spacing.base,
       padding: theme.spacing.base,
     },
     buttonText: {
       color: theme.color.onPrimary,
       fontSize: 14,
       fontWeight: 'bold',
+      textAlign: 'center',
     },
   });
   return styles;
 };
 
 export const Card = React.memo(() => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, setTheme, toggleTheme } = useTheme();
   const Styles = useThemeAwareObject(createStyles);
 
   const InfoTextBoldStyles = React.useMemo<StyleProp<TextStyle>>(() => {
@@ -47,7 +55,7 @@ export const Card = React.memo(() => {
     return infoTextBoldStyles;
   }, [Styles]);
 
-  const ButtonElement = React.useMemo(() => {
+  const ToggleButtonElement = React.useMemo(() => {
     return (
       <TouchableOpacity onPress={toggleTheme} activeOpacity={0.75} style={Styles.button}>
         <Text style={Styles.buttonText}>{'Toggle the Theme!'}</Text>
@@ -55,13 +63,33 @@ export const Card = React.memo(() => {
     );
   }, [toggleTheme, Styles]);
 
+  const SetLightThemeButtonElement = React.useMemo(() => {
+    return (
+      <TouchableOpacity onPress={() => setTheme(DEFAULT_LIGHT_THEME)} activeOpacity={0.75} style={Styles.button}>
+        <Text style={Styles.buttonText}>{'Set light Theme!'}</Text>
+      </TouchableOpacity>
+    );
+  }, [setTheme, Styles]);
+
+  const SetDarkThemeButtonElement = React.useMemo(() => {
+    return (
+      <TouchableOpacity onPress={() => setTheme(DEFAULT_DARK_THEME)} activeOpacity={0.75} style={Styles.button}>
+        <Text style={Styles.buttonText}>{'Set dark Theme!'}</Text>
+      </TouchableOpacity>
+    );
+  }, [setTheme, Styles]);
+
   return (
     <View style={Styles.root}>
       <View style={Styles.infoTextWrapper}>
         <Text style={Styles.infoText}>{'The current theme is: '}</Text>
         <Text style={InfoTextBoldStyles}>{theme.id}</Text>
       </View>
-      {ButtonElement}
+      <View style={Styles.buttonsWrapper}>
+        {ToggleButtonElement}
+        {SetLightThemeButtonElement}
+        {SetDarkThemeButtonElement}
+      </View>
     </View>
   );
 });
