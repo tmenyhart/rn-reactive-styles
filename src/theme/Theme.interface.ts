@@ -1,6 +1,7 @@
 export interface ColorTheme {
   primary: string;
   onPrimary: string;
+  primaryDark: string;
   surface: string;
   onSurface: string;
   background: string;

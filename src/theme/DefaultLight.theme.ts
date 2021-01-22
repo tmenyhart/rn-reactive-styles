@@ -3,6 +3,7 @@ import { ColorTheme, SpacingTheme, Theme } from './Theme.interface';
 const DEFAULT_LIGHT_COLOR_THEME: ColorTheme = {
   primary: '#03a9f4',
   onPrimary: '#fff',
+  primaryDark: '#0288d1',
   surface: '#fff',
   onSurface: '#000',
   background: '#dedede',
