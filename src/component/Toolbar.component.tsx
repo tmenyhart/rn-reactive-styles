@@ -39,7 +39,7 @@ export const Toolbar = React.memo<ToolbarProps>((props) => {
 
   return (
     <View style={Styles.container}>
-      <StatusBar backgroundColor={StyleVariables.statusBarColor} />
+      <StatusBar backgroundColor={StyleVariables.statusBarColor} barStyle={'light-content'} />
       <Text style={Styles.text}>{props.title}</Text>
     </View>
   );
