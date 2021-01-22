@@ -6,11 +6,15 @@ import { Theme } from './Theme.interface';
 
 interface ProvidedValue {
   theme: Theme;
+  setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
 }
 
 const Context = React.createContext<ProvidedValue>({
   theme: DEFAULT_LIGHT_THEME,
+  setTheme: () => {
+    console.log('ThemeProvider is not rendered!');
+  },
   toggleTheme: () => {
     console.log('ThemeProvider is not rendered!');
   },
@@ -23,6 +27,16 @@ interface Props {
 
 export const ThemeProvider = React.memo<Props>((props) => {
   const [theme, setTheme] = React.useState<Theme>(props.initial);
+
+  const SetThemeCallback = React.useCallback((newTheme: Theme) => {
+    setTheme((currentTheme: Theme) => {
+      if (currentTheme.id === newTheme.id) {
+        return currentTheme;
+      }
+
+      return newTheme;
+    });
+  }, []);
 
   const ToggleThemeCallback = React.useCallback(() => {
     setTheme((currentTheme) => {
@@ -39,10 +53,11 @@ export const ThemeProvider = React.memo<Props>((props) => {
   const MemoizedValue = React.useMemo(() => {
     const value: ProvidedValue = {
       theme,
+      setTheme: SetThemeCallback,
       toggleTheme: ToggleThemeCallback,
     };
     return value;
-  }, [theme, ToggleThemeCallback]);
+  }, [theme, SetThemeCallback, ToggleThemeCallback]);
 
   return <Context.Provider value={MemoizedValue}>{props.children}</Context.Provider>;
 });
