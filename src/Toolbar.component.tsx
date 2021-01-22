@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { Theme, useTheme } from './theme';
+import { Theme, useThemeAwareObject } from './theme';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
@@ -26,9 +26,7 @@ export interface ToolbarProps {
 }
 
 export const Toolbar = React.memo<ToolbarProps>((props) => {
-  const { theme } = useTheme();
-
-  const Styles = React.useMemo(() => createStyles(theme), [theme]);
+  const Styles = useThemeAwareObject(createStyles);
 
   return (
     <View style={Styles.container}>
