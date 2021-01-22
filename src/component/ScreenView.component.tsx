@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Theme, useThemeAwareObject } from './theme';
+import { Theme, useThemeAwareObject } from '../theme';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({

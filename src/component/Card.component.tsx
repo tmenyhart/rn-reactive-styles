@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleProp, StyleSheet, Text, TextStyle, TouchableOpacity, View } from 'react-native';
 
-import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME, Theme, useTheme, useThemeAwareObject } from './theme';
+import { DEFAULT_DARK_THEME, DEFAULT_LIGHT_THEME, Theme, useTheme, useThemeAwareObject } from '../theme';
 import { RenderCounter } from './RenderCounter.component';
 
 const createStyles = (theme: Theme) => {
