@@ -23,7 +23,7 @@ const createStyles = (theme: Theme) => {
 export const RenderCounter = React.memo(() => {
   const Styles = useThemeAwareObject(createStyles);
 
-  const numberOfRendersRef = React.useRef<number>(0);
+  const numberOfRendersRef = React.useRef<number>(1);
 
   const opacityAnimatedValueRef = React.useRef<Animated.Value>(new Animated.Value(0));
 
