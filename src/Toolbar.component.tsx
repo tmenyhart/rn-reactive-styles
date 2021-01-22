@@ -16,6 +16,7 @@ const createStyles = (theme: Theme) => {
     text: {
       color: theme.color.onPrimary,
       fontSize: 14,
+      fontWeight: 'bold',
     },
   });
   return styles;
