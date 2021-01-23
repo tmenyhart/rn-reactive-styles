@@ -4,3 +4,6 @@ jest.mock('react-native-device-info', () => {
     hasNotch: jest.fn(() => false),
   };
 });
+
+// For Animated API
+jest.useFakeTimers();
