@@ -2,9 +2,10 @@
 
 This repository contains example code for my article published on Medium.
 
-| Android Light Theme | Android Dark Theme |
-| :------------- | :----------: |
+| Light Theme | Dark Theme |
+| :------------- | :----------: | :----------: | :----------: |
 | ![AndroidLightTheme](./.wiki/android_light_theme.png) | ![AndroidDarkTheme](./.wiki/android_dark_theme.png) |
+| ![iOSLightTheme](./.wiki/ios_light_theme.png) | ![iOSDarkTheme](./.wiki/ios_dark_theme.png) |
 
 ## Overview
 
