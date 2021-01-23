@@ -1,12 +1,13 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
+import DeviceInfo from 'react-native-device-info';
 
 import { Theme, useThemeAwareObject } from '../theme';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
     iosStatusBar: {
-      height: 20,
+      height: DeviceInfo.hasNotch() ? 44 : 20,
       backgroundColor: theme.color.primary,
     },
     container: {
