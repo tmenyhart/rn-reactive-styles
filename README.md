@@ -3,7 +3,7 @@
 This repository contains example code for my article published on Medium.
 
 | Light Theme | Dark Theme |
-| :------------- | :----------: | :----------: | :----------: |
+| :------------- | :----------: |
 | ![AndroidLightTheme](./.wiki/android_light_theme.png) | ![AndroidDarkTheme](./.wiki/android_dark_theme.png) |
 | ![iOSLightTheme](./.wiki/ios_light_theme.png) | ![iOSDarkTheme](./.wiki/ios_dark_theme.png) |
 
