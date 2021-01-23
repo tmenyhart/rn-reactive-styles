@@ -1,10 +1,14 @@
 import React from 'react';
-import { StatusBar, StyleSheet, Text, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, Text, View } from 'react-native';
 
 import { Theme, useThemeAwareObject } from '../theme';
 
 const createStyles = (theme: Theme) => {
   const styles = StyleSheet.create({
+    iosStatusBar: {
+      height: 20,
+      backgroundColor: theme.color.primary,
+    },
     container: {
       alignItems: 'center',
       backgroundColor: theme.color.primary,
@@ -15,7 +19,7 @@ const createStyles = (theme: Theme) => {
     },
     text: {
       color: theme.color.onPrimary,
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: 'bold',
     },
   });
@@ -37,10 +41,21 @@ export const Toolbar = React.memo<ToolbarProps>((props) => {
   const Styles = useThemeAwareObject(createStyles);
   const StyleVariables = useThemeAwareObject(createStyleVariables);
 
+  const IosStatusBarElementOrNull = React.useMemo(() => {
+    if (Platform.OS !== 'ios') {
+      return null;
+    }
+
+    return <View style={Styles.iosStatusBar} />;
+  }, [Styles]);
+
   return (
-    <View style={Styles.container}>
-      <StatusBar backgroundColor={StyleVariables.statusBarColor} barStyle={'light-content'} />
-      <Text style={Styles.text}>{props.title}</Text>
+    <View>
+      {IosStatusBarElementOrNull}
+      <View style={Styles.container}>
+        <StatusBar backgroundColor={StyleVariables.statusBarColor} barStyle={'light-content'} />
+        <Text style={Styles.text}>{props.title}</Text>
+      </View>
     </View>
   );
 });
