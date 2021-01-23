@@ -20,7 +20,7 @@ const Context = React.createContext<ProvidedValue>({
   },
 });
 
-interface Props {
+export interface Props {
   initial: Theme;
   children?: React.ReactNode;
 }
