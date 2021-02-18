@@ -1,6 +1,6 @@
 # Reactive styles in React Native example
 
-This repository contains example code for my article published on Medium.
+This repository contains example code for my article published on [Medium](https://medium.com/supercharges-mobile-product-guide/reactive-styles-in-react-native-79a41fbdc404).
 
 | Light Theme | Dark Theme |
 | :------------- | :----------: |
