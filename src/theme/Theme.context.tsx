@@ -63,3 +63,5 @@ export const ThemeProvider = React.memo<Props>((props) => {
 });
 
 export const useTheme = () => React.useContext(Context);
+
+export const ThemeContextConsumer = Context.Consumer;
