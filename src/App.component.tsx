@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Card, ScreenView, Toolbar } from './component';
+import { Card, Card2, ScreenView, Toolbar } from './component';
 import { DEFAULT_LIGHT_THEME, ThemeProvider } from './theme';
 
 export const App = React.memo(() => {
@@ -9,6 +9,7 @@ export const App = React.memo(() => {
       <ScreenView>
         <Toolbar title={'Hello Reactive Styles!'} />
         <Card />
+        <Card2 />
       </ScreenView>
     </ThemeProvider>
   );
